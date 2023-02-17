@@ -1,0 +1,22 @@
+<ion-content>
+  <br /><br /><br />
+  <h1 style="text-align: center">Últimos Actualizados</h1>
+  <ion-slides [options]="slideOpts">
+    <ion-slide *ngFor="let anime of recent_anime">
+      <ion-card color="tertiary" class="card-container">
+        <img alt="anime image" src="{{anime.animeImg}}" />
+
+        <ion-card-content class="card-title"
+          >{{anime.animeTitle}}</ion-card-content
+        >
+
+        <ion-card-content>
+          Episodio: {{anime.episodeNum}}
+          <ion-button color="light" expand="block" shape="round"
+            >Ver ahora</ion-button
+          >
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
