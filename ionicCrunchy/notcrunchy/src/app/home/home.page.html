@@ -1,6 +1,8 @@
+
+
 <ion-content>
   <br /><br /><br />
-  <h1 style="text-align: center">Últimos Actualizados</h1>
+  <h6 style="text-align: start; margin-left: 5px;">Últimos Actualizados</h6>
   <ion-slides [options]="slideOpts">
     <ion-slide *ngFor="let anime of recent_anime">
       <ion-card color="tertiary" class="card-container">
@@ -12,7 +14,29 @@
 
         <ion-card-content>
           Episodio: {{anime.episodeNum}}
-          <ion-button color="light" expand="block" shape="round"
+          <ion-button (click)="infoAnime(anime.animeId)" color="light" expand="block" shape="round"
+            >Ver ahora</ion-button
+          >
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+  <!--segundo slider-->
+  <br /><br /><br />
+  <h6 style="text-align: start; margin-left: 5px;">Populares</h6>
+  <ion-slides [options]="slideOpts">
+    <ion-slide *ngFor="let anime of popular_anime">
+      <ion-card color="tertiary" class="card-container">
+        <img alt="anime image" src="{{anime.animeImg}}" />
+
+        <ion-card-content class="card-title"
+          >{{anime.animeTitle}}</ion-card-content
+        >
+
+        <ion-card-content>
+          Episodio: {{anime.episodeNum}}
+          <ion-button (click)="infoAnime(anime.animeId)" color="light" expand="block" shape="round"
             >Ver ahora</ion-button
           >
         </ion-card-content>
