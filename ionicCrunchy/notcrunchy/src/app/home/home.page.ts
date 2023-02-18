@@ -30,13 +30,17 @@ export class HomePage implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.presentLoading(true);
     this.anime.getAnime('recent-release').subscribe(data => {
       this.recent_anime = Object.values(data);
       console.log(data);
+      this.presentLoading(false);
     });
+    this.presentLoading(true);
 
     this.anime.getAnime('popular').subscribe(data => {
       this.popular_anime = Object.values(data);
+      this.presentLoading(false);
     });
   }
   
