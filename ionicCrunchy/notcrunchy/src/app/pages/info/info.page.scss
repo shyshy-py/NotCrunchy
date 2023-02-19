@@ -1,0 +1,25 @@
+.container{
+    height: 50%;
+    background-blend-mode: luminosity ;
+    background-repeat: no-repeat;
+    background-size:cover;
+
+    background-color: rgba(98, 80, 133, 0.479);
+    
+
+}
+.container img{
+    width: 25vh;
+    margin-left: 25%;
+    box-shadow: 10px 20px 10px rgba(0, 0, 0, 30);
+    
+
+}
+
+
+.text{
+    text-align: center;
+    font-size: 35px;
+    text-shadow: 7px 2px 4px #000000; /* Desplazamiento horizontal de 2px, desplazamiento vertical de 2px, desenfoque de 4px y color de sombra negro (#000000) */
+    
+}

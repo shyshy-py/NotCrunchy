@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AnimeService } from '../service/anime.service';
 import { LoadingController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -20,16 +21,24 @@ export class HomePage implements OnInit {
     }
   }
 
-  idAnime: string = '';
+  idAnime: any;
   recent_anime: any[] = [];
   popular_anime: any[] = [];
 
   constructor( 
     private anime: AnimeService,
-    private loadingController: LoadingController
-  ) {}
+    private loadingController: LoadingController,
+    private nav:NavController
+  ) {
+    
+  }
+
+    
+
+
 
   ngOnInit(): void {
+    
     this.presentLoading(true);
     this.anime.getAnime('recent-release').subscribe(data => {
       this.recent_anime = Object.values(data);
@@ -63,10 +72,13 @@ export class HomePage implements OnInit {
 
   async infoAnime(id: string) {
     this.presentLoading(true);
+    this.idAnime=id
+    localStorage.setItem('idAnime',this.idAnime)
     
 
     this.anime.getAnime(`search?keyw=${id}`).subscribe(
       data => {
+       
         console.log(data);
         
         this.presentLoading(false);

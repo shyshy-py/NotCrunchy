@@ -12,7 +12,7 @@
           >{{anime.animeTitle}}</ion-card-content
         >
 
-        <ion-card-content>
+        <ion-card-content >
           Episodio: {{anime.episodeNum}}
           <ion-button (click)="infoAnime(anime.animeId)" [routerLink]="['info']" routerLinkActive="router-link-active"  color="light" expand="block" shape="round"
             >Ver ahora</ion-button
@@ -36,7 +36,7 @@
 
         <ion-card-content>
           Episodio: {{anime.episodeNum}}
-          <ion-button (click)="infoAnime(anime.animeId)" color="light" expand="block" shape="round"
+          <ion-button (click)="infoAnime(anime.animeId)" [routerLink]="['info']" color="light" expand="block" shape="round"
             >Ver ahora</ion-button
           >
         </ion-card-content>
