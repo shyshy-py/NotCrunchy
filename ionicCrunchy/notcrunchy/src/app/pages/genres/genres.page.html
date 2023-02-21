@@ -1,0 +1,17 @@
+
+
+<ion-content>
+  <br><br><br>
+  <ion-card *ngFor="let anime of arrayGenre">
+    <img alt="Silhouette of mountains" src="{{anime.animeImg}}" />
+    <ion-card-header>
+      <ion-card-title>{{anime.animeTitle}}</ion-card-title>
+      <ion-card-subtitle>{{idGenre}}</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      Here's a small text description for the card content. Nothing more, nothing less.
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+

@@ -17,12 +17,14 @@ export class InfoPage implements OnInit {
 2=anio
 3=estado (en emision)
 4={genero}
+
 5=nombre en jp
 6=descripcion en eng
 7= src imagen
 8=n episodio
 9={episodios,link episodios}
 */
+  mostrarInfo = false;
   nameAnime:any;
 
   constructor( private anime:AnimeService) { }
@@ -41,6 +43,9 @@ export class InfoPage implements OnInit {
 
   }
 
+  verInfo() {
+    this.mostrarInfo = !this.mostrarInfo; // cambiar la variable mostrarMas a true o false
+ }
   
 
 }

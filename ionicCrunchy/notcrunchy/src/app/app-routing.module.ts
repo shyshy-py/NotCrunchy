@@ -27,6 +27,11 @@ const routes: Routes = [
   {
     path: 'home/info',component:InfoPage
   },
+  {
+    path: 'watch-anime/genres',
+    loadChildren: () => import('./pages/genres/genres.module').then( m => m.GenresPageModule)
+  },
+
 
 ];
 

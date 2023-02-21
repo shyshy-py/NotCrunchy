@@ -78,6 +78,7 @@ export class HomePage implements OnInit {
 
     this.anime.getAnime(`search?keyw=${id}`).subscribe(
       data => {
+        console.log('data search')
        
         console.log(data);
         

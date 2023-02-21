@@ -3,10 +3,17 @@
     <br /><br />
     <h1 class="text">{{selectAnime[0]}}</h1>
     <img src="{{selectAnime[7]}}" alt="" />
+    <p style="text-align: center; font-size: smaller">{{selectAnime[1]}}</p>
   </div>
-  <br /><br /><br />
- 
-    <p>{{selectAnime[6]}}</p>
-    
 
+  <div style="padding-top: 130px; padding-left: 35%;">
+    <ion-button color="tertiary" (click)="verInfo()">Ver más</ion-button>
+  </div>
+  <ion-card *ngIf="mostrarInfo">
+    <ion-card-content> {{selectAnime[6]}} </ion-card-content>
+  </ion-card>
+
+  <div>
+    <h1>AAAAAAAA</h1>
+  </div>
 </ion-content>

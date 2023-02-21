@@ -1,30 +1,16 @@
 
- 
-
 <ion-content>
-  
-
-  <ion-card *ngFor="let item of data; let i=index">
-    <ion-card-header>
-      <ion-card-title>{{item.animeTitle | uppercase}}</ion-card-title>
-      <ion-label>{{item.episodeUrl}}</ion-label>
-    </ion-card-header>
-
-    <ion-card-content>
-      <ion-list>
-        <ion-item>
-          <img
-            style="width: 200px"
-            alt="Silhouette of mountains"
-            src="{{item.animeImg}}"
-          />
-
-          
-        </ion-item>
-      </ion-list>
-      <ion-button class="btn btn-primary"><a style="color: white;" class="btn btn-primary" href="{{item.episodeUrl}}">ver online</a></ion-button>
-      
-    </ion-card-content>
-    
-  </ion-card>
+  <br><br><br>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="6" *ngFor="let item of genres; let i = index;">
+        <ion-card routerLink="genres"(click)="setItem(item)">
+          <img src="" alt="Imagen de {{ item }}" />
+          <ion-card-header>
+            <ion-card-title>{{ item }}</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
