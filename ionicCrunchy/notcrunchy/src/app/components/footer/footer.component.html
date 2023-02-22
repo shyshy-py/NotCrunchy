@@ -2,19 +2,19 @@
     
   
   <ion-tab-bar color="tertiary" slot="bottom">
-    <ion-tab-button tab="home">
+    <ion-tab-button (click)="noLocation()" tab="home">
       <ion-icon name="home-outline"></ion-icon>
       Inicio
     </ion-tab-button>
-    <ion-tab-button  tab="watch-anime">
+    <ion-tab-button (click)="noLocation()"  tab="watch-anime">
       <ion-icon name="radio"></ion-icon>
       Anime
     </ion-tab-button>
-    <ion-tab-button tab="library">
+    <ion-tab-button (click)="noLocation()" tab="movies">
       <ion-icon name="play-sharp"></ion-icon>
       Explorar
     </ion-tab-button>
-    <ion-tab-button tab="search">
+    <ion-tab-button (click)="noLocation()" tab="search">
       <ion-icon name="person-circle-outline"></ion-icon>
       Mi cuenta
     </ion-tab-button>

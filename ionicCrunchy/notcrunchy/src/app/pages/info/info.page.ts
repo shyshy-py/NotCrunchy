@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AnimeService } from 'src/app/service/anime.service';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-info',
@@ -26,10 +29,18 @@ export class InfoPage implements OnInit {
 */
   mostrarInfo = false;
   nameAnime:any;
+  pageLoaded = false;
 
-  constructor( private anime:AnimeService) { }
+  constructor(
+    private anime: AnimeService,
+    private location: Location,
+    private router: Router,
+    private navCtrl:NavController
+  ) {
+    
+   }
 
-  ngOnInit() {
+   ngOnInit() {
 
     this.animeId=localStorage.getItem('idAnime')
 
@@ -37,15 +48,18 @@ export class InfoPage implements OnInit {
       this.selectAnime=Object.values(data)
       console.log('data info')
       console.log(this.selectAnime)
+    });
+  }
 
+  ionViewDidEnter() {
+   
+  }
 
-    })
-
+  ionViewWillLeave() {
+    this.navCtrl.navigateForward
   }
 
   verInfo() {
-    this.mostrarInfo = !this.mostrarInfo; // cambiar la variable mostrarMas a true o false
- }
-  
-
+    this.mostrarInfo = !this.mostrarInfo;
+  }
 }

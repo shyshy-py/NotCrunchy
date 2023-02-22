@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { InfoPageModule } from './pages/info/info.module';
 import { InfoPage } from './pages/info/info.page';
 import { WatchAnimePage } from './pages/watch-anime/watch-anime.page';
 
@@ -25,13 +24,16 @@ const routes: Routes = [
     loadChildren: () => import('./pages/watch-anime/watch-anime.module').then( m => m.WatchAnimePageModule)
   },
   {
-    path: 'home/info',component:InfoPage
+    path: 'info',component:InfoPage
   },
   {
     path: 'watch-anime/genres',
     loadChildren: () => import('./pages/genres/genres.module').then( m => m.GenresPageModule)
   },
-
+  {
+    path: 'movies',
+    loadChildren: () => import('./pages/movies/movies.module').then( m => m.MoviesPageModule)
+  },
 
 ];
 

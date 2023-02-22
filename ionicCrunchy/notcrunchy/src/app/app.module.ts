@@ -11,9 +11,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 import { AppRoutingModule } from './app-routing.module';
+import { InfoPage } from './pages/info/info.page';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent,WatchAnimePage,FooterComponent],
+  declarations: [AppComponent, NavbarComponent,WatchAnimePage,FooterComponent,InfoPage],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),

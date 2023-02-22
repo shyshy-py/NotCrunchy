@@ -10,7 +10,15 @@
     </ion-card-header>
   
     <ion-card-content>
-      Here's a small text description for the card content. Nothing more, nothing less.
+      <ion-button
+            
+            [routerLink]="['**/info']"
+            routerLinkActive="router-link-active"
+            color="light"
+            expand="block"
+            shape="round"
+            (click)="getId(anime.animeId)"
+            >Ver ahora</ion-button>
     </ion-card-content>
   </ion-card>
 </ion-content>

@@ -1,3 +1,14 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
 <ion-content>
   <br /><br /><br />
   <h6 style="text-align: start; margin-left: 5px">Últimos Actualizados</h6>
@@ -14,7 +25,6 @@
           Episodio: {{anime.episodeNum}}
           <ion-button
             (click)="infoAnime(anime.animeId)"
-            [routerLink]="['info']"
             routerLinkActive="router-link-active"
             color="light"
             expand="block"
@@ -41,7 +51,6 @@
         <ion-card-content>
           <ion-button
             (click)="infoAnime(anime.animeId)"
-            [routerLink]="['info']"
             color="light"
             expand="block"
             shape="round"

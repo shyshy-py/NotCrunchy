@@ -91,5 +91,7 @@ export class HomePage implements OnInit {
         
       }
     );
+    this.nav.navigateForward(['/info',{animeId:id}])
+
   }
 }
