@@ -4,16 +4,44 @@
     <h1 class="text">{{selectAnime[0]}}</h1>
     <img src="{{selectAnime[7]}}" alt="" />
     <p style="text-align: center; font-size: smaller">{{selectAnime[1]}}</p>
-  </div>
 
-  <div style="padding-top: 130px; padding-left: 35%;">
-    <ion-button color="tertiary" (click)="verInfo()">Ver más</ion-button>
-  </div>
-  <ion-card *ngIf="mostrarInfo">
-    <ion-card-content> {{selectAnime[6]}} </ion-card-content>
-  </ion-card>
-
-  <div>
-    <h1>AAAAAAAA</h1>
+    <ion-accordion-group expand="inset">
+      <ion-accordion value="first">
+        <ion-item (click)="verInfo()" slot="header" color="rose">
+          <ion-label>Description</ion-label>
+        </ion-item>
+        <div *ngIf="mostrarInfo" class="ion-padding" slot="content">
+          {{selectAnime[6]}}
+        </div>
+      </ion-accordion>
+      <ion-accordion value="second" href="">
+        <ion-item slot="header" color="rose">
+          <ion-label>Genre</ion-label>
+        </ion-item>
+        <div
+          *ngFor="let item of selectAnime[4]"
+          class="ion-padding"
+          slot="content"
+        >
+          <ion-label>{{item}}</ion-label>
+        </div>
+      </ion-accordion>
+      <ion-accordion value="third">
+        <ion-item slot="header" color="rose">
+          <ion-label>Episodes</ion-label>
+        </ion-item>
+        <div
+          *ngFor="let e of selectAnime[9]"
+          class="ion-padding"
+          slot="content"
+          
+        >
+        <ion-label *ngIf="selectAnime[9].length===0">No episodes</ion-label>
+          Episode: {{e.episodeNum}}
+          
+          <ion-button [href]="e.episodeUrl" (click)="urlEpisode(e.episodeUrl)" color="tertiary"> Watch Episode </ion-button>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
   </div>
 </ion-content>

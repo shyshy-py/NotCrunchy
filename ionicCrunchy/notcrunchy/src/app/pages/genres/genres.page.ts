@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AnimeService } from 'src/app/service/anime.service';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { LoadingController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-genres',
@@ -14,9 +14,10 @@ export class GenresPage implements OnInit {
   arrayGenre: any = [];
   id: any;
 
-  constructor(private anime: AnimeService, private navCtrl:NavController, private router:Router) {}
+  constructor(private loadingController:LoadingController,private anime: AnimeService, private navCtrl:NavController, private router:Router) {}
 
   ngOnInit() {
+    this.presentLoading(true)
     this.idGenre = localStorage.getItem('genre');
 
     this.anime.getAnime(`genre/${this.idGenre}`).subscribe((data) => {
@@ -24,14 +25,37 @@ export class GenresPage implements OnInit {
 
       console.log(this.arrayGenre);
     });
+    
+  }
+
+  ionViewWillEnter(){
+    this.presentLoading(false)
   }
 
   getId(id:string){
+    this.presentLoading(true)
     console.log(this.arrayGenre)
     localStorage.setItem('idAnime',id)
     this.navCtrl.navigateForward(['/info',{animeId:id}])
-   
+   this.presentLoading(false)
+    
+  }
+
+  async presentLoading(show: boolean) {
+    console.log("presentLoading called with show=", show);
+    const loading = await this.loadingController.create({
+      message: 'Cargando...'
+    });
+    
+
+    if (show) {
+      await loading.present();
+    } if(loading !== undefined) {
+      await loading.dismiss();
+    }
     
   }
 
 }
+
+

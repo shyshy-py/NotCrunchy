@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AnimeService } from 'src/app/service/anime.service';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { LoadingController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-info',
@@ -35,31 +35,59 @@ export class InfoPage implements OnInit {
     private anime: AnimeService,
     private location: Location,
     private router: Router,
-    private navCtrl:NavController
+    private navCtrl:NavController,
+    private loadingController:LoadingController
   ) {
     
    }
 
    ngOnInit() {
+    this.presentLoading(true)
+    
 
     this.animeId=localStorage.getItem('idAnime')
 
     this.anime.getAnime(`anime-details/${this.animeId}`).subscribe(data=>{
+      
       this.selectAnime=Object.values(data)
       console.log('data info')
       console.log(this.selectAnime)
+      this.presentLoading(false)
     });
+    
+    
   }
+  
 
-  ionViewDidEnter() {
-   
-  }
-
+ 
   ionViewWillLeave() {
     this.navCtrl.navigateForward
   }
 
   verInfo() {
     this.mostrarInfo = !this.mostrarInfo;
+  }
+
+  urlEpisode(url:string){
+    console.log(url)
+    this.navCtrl.navigateForward(url)
+
+  }
+
+
+
+  async presentLoading(show: boolean) {
+    console.log("presentLoading called with show=", show);
+    const loading = await this.loadingController.create({
+      message: 'Cargando...'
+    });
+    
+
+    if (show) {
+      await loading.present();
+    } if(loading !== undefined) {
+      await loading.dismiss();
+    }
+    
   }
 }
