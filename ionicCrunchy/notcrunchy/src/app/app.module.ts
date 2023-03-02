@@ -12,6 +12,7 @@ import { FooterComponent } from './components/footer/footer.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { InfoPage } from './pages/info/info.page';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent,WatchAnimePage,FooterComponent,InfoPage],
@@ -19,7 +20,8 @@ import { InfoPage } from './pages/info/info.page';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
    
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

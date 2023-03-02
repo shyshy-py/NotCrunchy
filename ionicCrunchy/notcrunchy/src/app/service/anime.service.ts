@@ -13,6 +13,10 @@ export class AnimeService {
   getAnime(id:string){
     return this.http.get(`${this.url}/${id}`)
   }
+
+  searchAnime(id:string){
+    return this.http.get(`${this.url}/search?keyw=${id}`)
+  }
   
 }
 

@@ -7,3 +7,12 @@ ion-menu::part(backdrop) {
   
     box-shadow: 4px 0px 16px rgba(255, 0, 255, 0.18);
   }
+  
+  ion-menu{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+  }

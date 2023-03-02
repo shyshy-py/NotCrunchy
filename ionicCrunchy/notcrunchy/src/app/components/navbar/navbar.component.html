@@ -1,15 +1,53 @@
 <ion-header>
   <ion-toolbar color="tertiary">
     <ion-buttons slot="start">
-      <ion-button (click)="goBack()" expand="block"><ion-icon name="arrow-back-sharp"></ion-icon>
-
+      <ion-button (click)="goBack()" expand="block">
+        <ion-icon name="arrow-back-sharp"></ion-icon>
       </ion-button>
     </ion-buttons>
 
     <ion-buttons slot="end">
-      <ion-button>
+      <ion-button (click)="openMenu()" expand="block">
         <ion-icon slot="icon-only" name="search"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+<ion-menu #menu class="menu" side="start">
+  <ion-header>
+    
+    <ion-input style="margin-top: 10px; text-align: center;"
+      maxlength="30"
+      minlength="1"
+      size="10"
+      (keyup.enter)="onEnter(search)"
+      [(ngModel)]="search"
+      
+      placeholder="Search"
+    ></ion-input>
+  </ion-header>
+  <div *ngIf="isSearch" style="overflow-y: auto;">
+  <ion-card *ngFor="let i of animeSearch" >
+    <ion-card-header >
+      <ion-card-title>{{i.animeTitle}}</ion-card-title>
+      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <img alt="Silhouette of mountains" src="{{i.animeImg}}" />
+          </ion-thumbnail>
+          <ion-button (click)="goToAnime(i.animeId)">Ver</ion-button>
+        </ion-item>
+  
+       
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</div>
+<div *ngIf="isSearch==='notFound'" style="overflow-y: auto;">
+<h1>aaa</h1>
+</div>
+
+</ion-menu>

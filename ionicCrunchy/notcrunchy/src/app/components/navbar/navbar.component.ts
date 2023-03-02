@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { Location } from '@angular/common';
-
+import { AnimeService } from 'src/app/service/anime.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -9,7 +8,15 @@ import { Location } from '@angular/common';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private navCtrl:NavController) { }
+  @ViewChild('menu') menu:any;
+  
+  search: string= '';
+  isSearch:string='';
+  
+  animeSearch:any=[];
+  url:string='';
+
+  constructor(private navCtrl:NavController ,private anime:AnimeService) { }
 
   ngOnInit() {}
 
@@ -18,5 +25,29 @@ export class NavbarComponent implements OnInit {
     this.navCtrl.back()
     
   }
+  openMenu() {
+    this.menu.toggle('menu');
+  }
+  onEnter(id:string){
+    
+
+  this.anime.searchAnime(id).subscribe(data=>{
+    this.animeSearch=data
+
+    console.log(this.animeSearch)
+    this.isSearch='true'
+
+  })
+  this.isSearch='notFound'
+  
+  }
+
+  goToAnime(url:string){
+    localStorage.setItem('idAnime',url)
+    this.navCtrl.navigateForward(['/info',{animeId:url}])
+  }
+
+ 
+
 
 }

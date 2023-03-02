@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
 
   constructor(private router: Router) {
     router.events.subscribe((val) => {
-      if (router.url === '/home'|| router.url==='/info') {
+      if ( router.url==='/info') {
         this.isPage = true;
       } else {
         this.isPage = false;
